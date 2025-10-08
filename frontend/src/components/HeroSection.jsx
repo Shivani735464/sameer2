@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaCrown, FaBell, FaTools, FaMicrophoneAlt } from "react-icons/fa";
+import { HelpCircle } from "lucide-react";
 
 const HeroSection = () => {
   const navigate = useNavigate();
@@ -60,7 +61,7 @@ const HeroSection = () => {
         </p>
         <button
           onClick={() => navigate("/subscription")}
-          className="bg-yellow-400 text-white font-semibold px-8 py-1 rounded-lg shadow-md hover:bg-yellow-600 transition-all"
+          className=" text-gray-400 border-gray-400 border-2 font-semibold px-8 py-1 rounded-lg shadow-md hover:bg-yellow-600 transition-all"
         >
           Buy Now
         </button>
@@ -77,10 +78,10 @@ const HeroSection = () => {
           related to your work and subscription directly in your notification section.
         </p>
          <button
-          onClick={() => navigate("/subscription")}
-          className="bg-blue-400 text-white font-semibold px-8 py-1 rounded-lg shadow-md hover:bg-yellow-600 transition-all"
+          onClick={() => navigate("/messages")}
+          className="text-gray-400 border-gray-400 border-2 font-semibold px-8 py-1 rounded-lg shadow-md hover:bg-yellow-600 transition-all"
         >
-          Buy Now
+          See More
         </button>
       </div>
 
@@ -95,10 +96,19 @@ const HeroSection = () => {
           smart problem section. Get instant help when you need it.
         </p>
          <button
-          onClick={() => navigate("/subscription")}
-          className="bg-green-400 text-white font-semibold px-8 py-1 rounded-lg shadow-md hover:bg-yellow-600 transition-all"
+          onClick={() => navigate("/problem")}
+          className="text-gray-400 border-gray-400 border-2 font-semibold px-8 py-1 rounded-lg shadow-md hover:bg-yellow-600 transition-all"
         >
-          Buy Now
+           See More
+        </button>
+        <button
+          onClick={() => alert("Contact support at support@example.com")}
+          className="fixed z-10 top-5 right-4 flex items-center gap-2 bg-white backdrop-blur-md px-1 py-1 rounded-full shadow-md hover:bg-white hover:scale-105 transition-all font-[Rajdhani]"
+        >
+          <HelpCircle className="w-5 h-5 text-gray-700" />
+          {/* <span className="text-gray-800 font-semibold text-sm sm:text-base">
+            Help
+          </span> */}
         </button>
       </div>
 
@@ -124,9 +134,9 @@ const HeroSection = () => {
         </p>
          <button
           onClick={() => navigate("/subscription")}
-          className="bg-purple-500 text-white font-semibold px-8 py-1 rounded-lg shadow-md hover:bg-yellow-600 transition-all"
+          className="text-gray-400 border-gray-400 border-2 font-semibold px-8 py-1 rounded-lg shadow-md hover:bg-yellow-600 transition-all"
         >
-          Buy Now
+           See More
         </button>
       </div>
     </div>

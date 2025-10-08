@@ -42,7 +42,7 @@ const Intro2Screen = () => {
         {/* 🔹 Login Button */}
         <button
           onClick={() => navigate("/login")}
-          className="absolute bottom-[4%] left-1/2 -translate-x-1/2 bg-gradient-to-r from-blue-600 to-blue-700 text-white border border-gray-300 px-8 py-2 rounded-full shadow-md hover:bg-blue-700 hover:text-white hover:scale-105 transition-all font-[Rajdhani] text-base sm:text-lg"
+          className="absolute bottom-[4%] left-1/2 -translate-x-1/2 bg-gradient-to-r from-blue-600/70 to-blue-700/80 text-white border border-gray-300 px-8 py-2 rounded-full shadow-md hover:bg-blue-700 hover:text-white hover:scale-105 transition-all font-[Rajdhani] text-base sm:text-lg"
         >
           Login
         </button>
@@ -50,12 +50,12 @@ const Intro2Screen = () => {
         {/* 🔹 Help Button */}
         <button
           onClick={() => alert("Contact support at support@example.com")}
-          className="absolute z-10 top-5 right-5 flex items-center gap-2 bg-white backdrop-blur-md border border-gray-300 px-4 py-1 rounded-full shadow-md hover:bg-white hover:scale-105 transition-all font-[Rajdhani]"
+          className="fixed z-10 top-5 right-4 flex items-center gap-2 bg-white backdrop-blur-md px-1 py-1 rounded-full shadow-md hover:bg-white hover:scale-105 transition-all font-[Rajdhani]"
         >
-          <HelpCircle className="w-5 h-5 text-gray-600" />
-          <span className="text-gray-800 font-semibold text-sm sm:text-base">
+          <HelpCircle className="w-5 h-5 text-gray-700" />
+          {/* <span className="text-gray-800 font-semibold text-sm sm:text-base">
             Help
-          </span>
+          </span> */}
         </button>
       </div>
 
@@ -73,7 +73,7 @@ const Intro2Screen = () => {
             </p> */}
             <button
               onClick={() => navigate("/signup")}
-              className="mt-1 bg-gradient-to-r from-green-600 to-emerald-500 text-white px-5 py-2 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all font-[Rajdhani] text-[16px] sm:text-base"
+              className="mt-1 bg-gradient-to-r from-green-600/60 to-emerald-500/70 text-white px-5 py-2 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all font-[Rajdhani] text-[16px] sm:text-base"
             >
               Create Account
             </button>

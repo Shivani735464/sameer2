@@ -153,15 +153,15 @@ const Signup = () => {
           />
         </form>
       </div>
-<button
-          onClick={() => alert("Contact support at support@example.com")}
-          className="absolute z-10 top-5 right-5 flex items-center gap-2 bg-white backdrop-blur-md border border-gray-300 px-4 py-1 rounded-full shadow-md hover:bg-white hover:scale-105 transition-all font-[Rajdhani]"
-        >
-          <HelpCircle className="w-5 h-5 text-gray-600" />
-          <span className="text-gray-800 font-semibold text-sm sm:text-base">
-            Help
-          </span>
-        </button>
+        <button
+                 onClick={() => alert("Contact support at support@example.com")}
+                 className="fixed z-10 top-5 right-4 flex items-center gap-2 bg-white backdrop-blur-md px-1 py-1 rounded-full shadow-md hover:bg-white hover:scale-105 transition-all font-[Rajdhani]"
+               >
+                 <HelpCircle className="w-5 h-5 text-gray-700" />
+                 {/* <span className="text-gray-800 font-semibold text-sm sm:text-base">
+                   Help
+                 </span> */}
+               </button>
       {/* 🔹 Bottom 25% - Card Section */}
       <div className="h-[25%] flex justify-center items-center p-3 bg-white">
         <div className="relative flex flex-row sm:flex-row items-center justify-between p-4 sm:p-6 w-[95%] sm:w-[85%] md:w-[70%] transition-all duration-300">
@@ -173,7 +173,7 @@ const Signup = () => {
             <button
               type="submit"
               onClick={handleSubmit}
-              className="bg-gradient-to-r from-green-600 to-emerald-500 text-white px-8 py-2 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all font-semibold"
+              className="bg-gradient-to-r from-green-600/60 to-emerald-500/70 text-white px-8 py-2 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all font-semibold"
             >
               Register
             </button>

@@ -82,14 +82,14 @@ const Login = () => {
 
         {/* 🔹 Help Button */}
         <button
-          onClick={() => alert("Contact support at support@example.com")}
-          className="absolute z-10 top-5 right-5 flex items-center gap-2 bg-white backdrop-blur-md border border-gray-300 px-4 py-1 rounded-full shadow-md hover:bg-white hover:scale-105 transition-all font-[Rajdhani]"
-        >
-          <HelpCircle className="w-5 h-5 text-gray-600" />
-          <span className="text-gray-800 font-semibold text-sm sm:text-base">
-            Help
-          </span>
-        </button>
+                 onClick={() => alert("Contact support at support@example.com")}
+                 className="fixed z-10 top-5 right-4 flex items-center gap-2 bg-white backdrop-blur-md px-1 py-1 rounded-full shadow-md hover:bg-white hover:scale-105 transition-all font-[Rajdhani]"
+               >
+                 <HelpCircle className="w-5 h-5 text-gray-700" />
+                 {/* <span className="text-gray-800 font-semibold text-sm sm:text-base">
+                   Help
+                 </span> */}
+               </button>
       </div>
 
       {/* 🔹 Bottom 25% - Terms & Login Section */}
@@ -105,7 +105,7 @@ const Login = () => {
             </p>
             <button
               onClick={handleSubmit}
-              className="w-fit mx-auto sm:mx-0 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-2 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all"
+              className="w-fit mx-auto sm:mx-0 bg-gradient-to-r from-blue-600/70 to-blue-700/80 text-white px-8 py-2 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all"
             >
               Login
             </button>
