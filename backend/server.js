@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 import userRoutes from "./routes/userRoutes.js";
+import problemRoutes from "./routes/problemRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -11,6 +12,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 app.use("/api/users", userRoutes);
+app.use("/api/problems", problemRoutes);
 
 mongoose
   .connect(process.env.MONGO_URI)
