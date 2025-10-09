@@ -66,7 +66,7 @@ const Intro2Screen = () => {
           {/* Left Section */}
           <div className="flex-1 text-center sm:text-left mb-3 sm:mb-0">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-800 font-[Rajdhani]">
-              Welcome to <span className="text-blue-700">Labour App</span>
+              Welcome to <span className="text-blue-700">Labor App</span>
             </h2>
             {/* <p className="text-gray-600 mt-1 text-sm md:text-base font-[Rajdhani]">
               Start your journey with us.

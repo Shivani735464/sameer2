@@ -12,7 +12,7 @@ const TopBar = () => {
         alt="Labour App Logo"
         className="w-8 h-8 mr-2"
       />
-      <h1 className="text-lg font-semibold text-white">Labour App</h1>
+      <h1 className="text-lg font-semibold text-white">Labor App</h1>
     </NavLink>
   );
 };

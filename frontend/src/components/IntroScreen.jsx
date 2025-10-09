@@ -19,7 +19,7 @@ const IntroScreen = ({ onFinish }) => {
             className="font-extrabold text-gray-800 tracking-wide animate-scaleFade
                        text-5xl sm:text-6xl md:text-7xl lg:text-8xl"
           >
-            LABOUR
+            LABOR
           </h1>
 
           <p
