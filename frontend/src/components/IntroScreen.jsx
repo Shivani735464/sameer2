@@ -23,7 +23,7 @@ const IntroScreen = ({ onFinish }) => {
           </h1>
 
           <p
-            className="text-gray-500 font-medium absolute top-full translate-x-4 sm:translate-x-6 ml-30 mt-1 animate-scaleFade delay-[0.2s]
+            className="text-gray-500 font-medium absolute top-full translate-x-4 sm:translate-x-6 ml-22 mt-1 animate-scaleFade delay-[0.2s]
                        text-xl sm:text-2xl md:text-3xl"
           >
             app

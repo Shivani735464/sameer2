@@ -39,6 +39,7 @@ import userRoutes from "./routes/userRoutes.js";
 import problemRoutes from "./routes/problemRoutes.js";
 import subscriptionRoutes from "./routes/subscriptionRoutes.js";
 import locationRoutes from "./routes/locationRoutes.js";
+// import problemRoutes from "./routes/problemRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -50,6 +51,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/problems", problemRoutes);
 app.use("/api/subscriptions", subscriptionRoutes);
 app.use("/api/location", locationRoutes);
+app.use("/api/problems", problemRoutes);
 
 
 mongoose

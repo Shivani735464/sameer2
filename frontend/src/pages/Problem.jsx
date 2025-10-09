@@ -107,6 +107,7 @@ import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 import { FaShoppingCart } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import VoiceSearch from "../components/VoiceSearch";
 
 const Problem = () => {
   const { user } = useAuth();
@@ -181,6 +182,7 @@ const Problem = () => {
     </button>
   </div>
 <h2 className="text-2xl font-semibold mt-1 mb-3">YOUR PROBLEMS</h2>
+ <VoiceSearch />
   {/* 🔹 Search + Filter */}
   <div className="flex items-center gap-3 mb-6 rounded-xl border-gray-200">
     <input
