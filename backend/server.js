@@ -50,7 +50,6 @@ app.use("/api/users", userRoutes);
 app.use("/api/problems", problemRoutes);
 app.use("/api/subscriptions", subscriptionRoutes);
 app.use("/api/location", locationRoutes);
-app.use("/api/problems", problemRoutes);
 
 
 mongoose
