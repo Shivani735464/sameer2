@@ -1,3 +1,36 @@
+// import express from "express";
+// import mongoose from "mongoose";
+// import dotenv from "dotenv";
+// import cors from "cors";
+// import userRoutes from "./routes/userRoutes.js";
+// import problemRoutes from "./routes/problemRoutes.js";
+// import subscriptionRoutes from "./routes/subscriptionRoutes.js";
+
+// dotenv.config();
+// const app = express();
+
+// app.use(cors());
+// app.use(express.json());
+// app.use("/uploads", express.static("uploads"));
+// app.use("/api/users", userRoutes);
+// app.use("/api/problems", problemRoutes);
+// app.use("/api/subscriptions", subscriptionRoutes);
+
+
+// mongoose
+//   .connect(process.env.MONGO_URI)
+//   .then(() => console.log("MongoDB connected"))
+//   .catch((err) => console.log(err));
+
+// const PORT = process.env.PORT || 5000;
+// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+
+
+
+
+
+
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
@@ -5,6 +38,7 @@ import cors from "cors";
 import userRoutes from "./routes/userRoutes.js";
 import problemRoutes from "./routes/problemRoutes.js";
 import subscriptionRoutes from "./routes/subscriptionRoutes.js";
+import locationRoutes from "./routes/locationRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -15,6 +49,7 @@ app.use("/uploads", express.static("uploads"));
 app.use("/api/users", userRoutes);
 app.use("/api/problems", problemRoutes);
 app.use("/api/subscriptions", subscriptionRoutes);
+app.use("/api/location", locationRoutes);
 
 
 mongoose

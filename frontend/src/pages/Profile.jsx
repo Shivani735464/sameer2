@@ -48,35 +48,6 @@ const Profile = () => {
       alert("Image upload failed");
     }
   };
-
-//  const handleSave = async () => {
-//   if (!user?.token) {
-//     alert("Session expired. Please login again.");
-//     return;
-//   }
-
-//   const changedFields = {};
-//   Object.keys(form).forEach((key) => {
-//     if (form[key] !== user[key]) changedFields[key] = form[key];
-//   });
-
-//   try {
-//     const res = await axios.patch(
-//       "http://localhost:5000/api/users/update",
-//       changedFields,
-//       { headers: { Authorization: `Bearer ${user.token}` } }
-//     );
-//     alert("Profile updated successfully!");
-//     // update localStorage with new info
-//     const updatedUser = { ...user, ...changedFields };
-//     setUser(updatedUser);
-//     localStorage.setItem("labourUser", JSON.stringify(updatedUser));
-//   } catch (err) {
-//     console.error(err);
-//     alert("Update failed: " + err.response?.data?.message);
-//   }
-// };
-
 const handleSave = async () => {
   // Define required fields (aap edit mode me sirf address fields allow kar rahe ho)
   const requiredFields = ["email", "colonyName", "streetName", "houseNumber", "city", "nearbyLandmark"];
@@ -129,12 +100,6 @@ const handleSave = async () => {
           />
           {isEditing && (
             <>
-              {/* <label
-                htmlFor="profilePic"
-                className="absolute bottom-0 right-0 bg-blue-600 p-1.5 rounded-full text-white cursor-pointer hover:bg-blue-700"
-              >
-                <FaCamera className="text-sm" />
-              </label> */}
               <input
                 id="profilePic"
                 type="file"
