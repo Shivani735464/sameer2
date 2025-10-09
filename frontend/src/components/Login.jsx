@@ -16,20 +16,9 @@ const Login = () => {
   const [form, setForm] = useState({ name: "", phone: "" });
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login } = useAuth(); // context ka login function
 
-  useEffect(() => {
-    document.body.style.fontFamily = "'Rajdhani', sans-serif";
-    const fontLink = document.createElement("link");
-    fontLink.href =
-      "https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&display=swap";
-    fontLink.rel = "stylesheet";
-    document.head.appendChild(fontLink);
-  }, []);
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async () => {
     try {
@@ -37,9 +26,10 @@ const Login = () => {
         `${import.meta.env.VITE_API_BASE_URL}/api/users/login`,
         form
       );
-      login(data);
-      navigate("/hero");
+      login(data); // user + token save
+      navigate("/hero"); // redirect
     } catch (err) {
+      console.error(err);
       setError("Invalid name or phone number");
     }
   };

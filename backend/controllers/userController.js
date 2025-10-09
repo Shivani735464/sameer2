@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import cloudinary from "cloudinary";
 import User from "../models/userModel.js";
 
 const generateToken = (id) => {
@@ -76,5 +77,17 @@ export const getProfile = async (req, res) => {
     res.json(user);
   } catch (err) {
     res.status(500).json({ message: err.message });
+  }
+};
+
+
+export const updateUser = async (req, res) => {
+  try {
+    const user = await User.findByIdAndUpdate(req.user._id, req.body, {
+      new: true,
+    });
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ message: "Update failed" });
   }
 };
