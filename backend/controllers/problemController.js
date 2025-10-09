@@ -67,3 +67,33 @@ export const getUserHistory = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
+
+
+
+export const searchProblemByVoice = async (req, res) => {
+  try {
+    const { query } = req.body; // user voice converted text
+
+    if (!query) {
+      return res.status(400).json({ message: "Query missing" });
+    }
+
+    console.log("🔍 Voice Query Received:", query);
+
+    const regex = new RegExp(query, "i"); // case-insensitive search
+
+    const results = await Problem.find({
+      $or: [{ title: regex }, { category: regex }, { description: regex }],
+    });
+
+    if (results.length === 0) {
+      return res.status(404).json({ message: "No matching problems found" });
+    }
+
+    res.status(200).json({ success: true, results });
+  } catch (error) {
+    console.error("❌ Error in voice search:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+};

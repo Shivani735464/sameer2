@@ -182,7 +182,7 @@ const Problem = () => {
     </button>
   </div>
 <h2 className="text-2xl font-semibold mt-1 mb-3">YOUR PROBLEMS</h2>
- <VoiceSearch />
+ <VoiceSearch onResults={(data) => setProblems(data)} />
   {/* 🔹 Search + Filter */}
   <div className="flex items-center gap-3 mb-6 rounded-xl border-gray-200">
     <input

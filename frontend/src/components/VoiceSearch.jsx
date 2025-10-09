@@ -1,108 +1,76 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 
-const VoiceSearch = () => {
-  const [results, setResults] = useState([]);
-  const [loading, setLoading] = useState(false);
+const VoiceSearch = ({ onResults }) => {
+  const [listening, setListening] = useState(false);
+  const [transcript, setTranscript] = useState("");
+  const [error, setError] = useState("");
 
-  const {
-    transcript,
-    listening,
-    resetTranscript,
-    browserSupportsSpeechRecognition,
-  } = useSpeechRecognition();
+  const handleVoiceSearch = () => {
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
 
-  useEffect(() => {
-    if (transcript && transcript.length > 2) {
-      // Automatically fetch when voice captured
-      fetchProblems(transcript);
+    if (!SpeechRecognition) {
+      alert("❌ Your browser does not support speech recognition.");
+      return;
     }
-  }, [transcript]);
 
-  const startListening = () => {
-    resetTranscript();
-    SpeechRecognition.startListening({
-      continuous: false,
-      language: "hi-IN", // or "hi-IN"
-    });
-  };
+    const recognition = new SpeechRecognition();
+    recognition.lang = "en-IN";
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
 
-  const stopListening = () => {
-    SpeechRecognition.stopListening();
-  };
+    recognition.start();
+    setListening(true);
+    setTranscript("");
+    setError("");
 
-  const fetchProblems = async (query) => {
-    try {
-      setLoading(true);
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API_BASE_URL}/api/problems/search?q=${encodeURIComponent(query)}`
-      );
-      setResults(data);
-    } catch (error) {
-      console.error("Error fetching:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+    console.log("🎙️ Listening...");
 
-  if (!browserSupportsSpeechRecognition) {
-    return <p>Your browser does not support voice recognition.</p>;
+    recognition.onresult = async (event) => {
+      const voiceText = event.results[0][0].transcript;
+      console.log("🗣️ Voice recognized:", voiceText);
+      setTranscript(voiceText);
+      setListening(false);
+
+      try {
+        const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/problems/voice-search`, {
+          query: voiceText,
+        });
+
+        console.log("✅ Search Results:", res.data.results);
+        onResults(res.data.results);
+      } catch (err) {
+        console.error("❌ Voice Search Error:", err);
+        setError("No matching problems found or server error");
+      }
+    };
+
+    recognition.onerror = (err) => {
+  console.error("🎤 Recognition Error:", err);
+  setListening(false);
+
+  if(err.error === "no-speech"){
+    setError("⚠️ No speech detected, please speak clearly!");
+  } else if(err.error === "audio-capture"){
+    setError("⚠️ Cannot access microphone, please check your device");
+  } else {
+    setError("🎤 Error during recognition: " + err.error);
   }
+};
+  };
 
   return (
-    <div className="p-4 text-center">
-      <h2 className="text-2xl font-bold mb-3">🎤 Voice Search</h2>
+    <div className="text-center my-6">
+      <button
+        onClick={handleVoiceSearch}
+        className="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition"
+      >
+        {listening ? "🎧 Listening..." : "🎤 Speak to Search"}
+      </button>
 
-      <div className="flex items-center justify-center gap-4">
-        <button
-          onClick={listening ? stopListening : startListening}
-          className={`px-6 py-2 rounded-lg text-white font-semibold transition ${
-            listening ? "bg-red-500 animate-pulse" : "bg-blue-600"
-          }`}
-        >
-          {listening ? "Listening..." : "Speak Now"}
-        </button>
-      </div>
-
-      {transcript && (
-        <p className="mt-4 text-gray-700">
-          You said: <strong>{transcript}</strong>
-        </p>
-      )}
-
-      {loading && <p className="mt-4 text-gray-500">Fetching results...</p>}
-
-      <div className="mt-6">
-        {results.length > 0 ? (
-          <div className="grid md:grid-cols-2 gap-4">
-            {results.map((item) => (
-              <div
-                key={item._id}
-                className="p-4 bg-white rounded-xl shadow hover:shadow-md transition"
-              >
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-40 object-cover rounded-lg mb-3"
-                />
-                <h3 className="text-lg font-semibold">{item.title}</h3>
-                <p className="text-gray-500">{item.description}</p>
-                <p className="text-sm text-gray-700 mt-2">
-                  <strong>Category:</strong> {item.category}
-                </p>
-                <p className="text-sm text-gray-700">
-                  <strong>Price:</strong> ₹{item.basePrice}
-                </p>
-              </div>
-            ))}
-          </div>
-        ) : (
-          transcript && !loading && (
-            <p className="text-gray-500 mt-4">No results found.</p>
-          )
-        )}
-      </div>
+      {transcript && <p className="mt-3 text-gray-700">You said: {transcript}</p>}
+      {error && <p className="mt-2 text-red-500">{error}</p>}
     </div>
   );
 };

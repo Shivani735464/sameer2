@@ -39,7 +39,6 @@ import userRoutes from "./routes/userRoutes.js";
 import problemRoutes from "./routes/problemRoutes.js";
 import subscriptionRoutes from "./routes/subscriptionRoutes.js";
 import locationRoutes from "./routes/locationRoutes.js";
-// import problemRoutes from "./routes/problemRoutes.js";
 
 dotenv.config();
 const app = express();
